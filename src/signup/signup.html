@@ -40,9 +40,13 @@
                       <input type="date" #date class="form-control" id="date" placeholder="Date">
                     </div>-->
                     
-                    <button type="submit" class="btn btn-default">Submit</button>
+                     <button type="submit" class="btn btn-default">Submit</button>
                     <button (click)="getUsers()">Get users</button>
+                    {{auth}}
                     <button (click)="postUsers($event, email.value, password.value)">Post users</button>
+                    <button (click)="getUsersService()">Get  with service</button>
+                    <button (click)="getUsersServiceID('57a83bdd9d4ccf7022ffbcf9')">Get  with service id</button>
+                    <!--<button (click)="postUsersService($event, email.value, password.value)">Post users service</button>-->
                   </div>
   </div>
 </form>
