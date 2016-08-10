@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { CORE_DIRECTIVES } from '@angular/common';
 import { Http, Headers } from '@angular/http';
 import { Router } from '@angular/router';
-import { AuthHttp } from 'angular2-jwt';
+
+import { AuthFactory } from '../services/authFactory';
 
 const styles = require('./home.css');
 const template = require('./home.html');
@@ -13,18 +14,29 @@ const template = require('./home.html');
   template: template,
   styles: [ styles ]
 })
+
 export class Home {
 
-  constructor(public router: Router, public http: Http, public authHttp: AuthHttp) {
+  constructor(public router: Router, public http: Http) {
   }
 
   logout() {
     localStorage.removeItem('accessToken');
     this.router.navigate(['/startPage']);
   }
-
-  getUser() {
-
-    console.log(this.http.get('http://localhost:3000/api/v1/users'));
+  
+  auth: any;
+  
+   getUsersService() {
+    this.auth = [];
+  
+    AuthFactory.getAll().then((data) => {
+      this.auth = data;
+      console.log('this.auth', this.auth);
+    }); 
   }
+
+  // getUser() {
+  //   console.log('get user', this.http.get('http://localhost:3000/api/v1/users'));
+  // }
 }
