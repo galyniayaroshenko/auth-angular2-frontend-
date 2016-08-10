@@ -32,7 +32,6 @@ export class Login {
           localStorage.setItem('accessToken', response.json().user.accessToken);
           this.router.navigate(['/home']);
           console.log(localStorage.getItem('accessToken'));
-          // console.log('$localStorage', localStorage.accessToken);
         },
         error => {
           alert(error.text());

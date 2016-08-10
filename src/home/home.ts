@@ -36,6 +36,14 @@ export class Home {
     }); 
   }
 
+  getUsersServiceID( id ) {
+      AuthFactory.get(id).then((data) => {
+        this.auth = data;
+        console.log('this.auth id', this.auth);
+      });
+      
+    }
+
   // getUser() {
   //   console.log('get user', this.http.get('http://localhost:3000/api/v1/users'));
   // }
