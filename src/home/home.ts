@@ -25,24 +25,16 @@ export class Home {
     this.router.navigate(['/startPage']);
   }
   
-  auth: any;
+  users: any;
   
    getUsersService() {
-    this.auth = [];
+    this.users = [];
   
     AuthFactory.getAll().then((data) => {
-      this.auth = data;
-      console.log('this.auth', this.auth);
+      this.users = data.users;
+      console.log('this.users', this.users);
     }); 
   }
-
-  getUsersServiceID( id ) {
-      AuthFactory.get(id).then((data) => {
-        this.auth = data;
-        console.log('this.auth id', this.auth);
-      });
-      
-    }
 
   // getUser() {
   //   console.log('get user', this.http.get('http://localhost:3000/api/v1/users'));
