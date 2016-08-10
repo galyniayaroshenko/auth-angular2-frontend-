@@ -28,11 +28,17 @@ export class Login {
     // AuthFactory.login(body)
       .subscribe(
         response => {
-          console.log(response.json());
-          localStorage.setItem('accessToken', response.json().user.accessToken);
-          this.router.navigate(['/home']);
-          console.log(localStorage.getItem('accessToken'));
+          if (response.json().status.success == null) {
+            alert('email address or password you entered is not correct');
+            console.log('response.json().status.success', response.json().status.success);
+          } else {
+            console.log(response.json());
+            localStorage.setItem('accessToken', response.json().user.accessToken);
+            this.router.navigate(['/home']);
+            console.log(localStorage.getItem('accessToken'));
+          }
         },
+         
         error => {
           alert(error.text());
           console.log(error.text());

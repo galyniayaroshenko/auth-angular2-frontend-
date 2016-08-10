@@ -31,10 +31,14 @@ export class Signup {
     // AuthFactory.save(body)
       .subscribe(
         response => {
-          if (response.json().status.success == null) {
+          if (response.json().status.success == null ) {
+            console.log('response.json().status.success', response.json().status.success);
             alert('email address or password you entered is not correct');
           } else {
-            this.router.navigate(['/login']);
+           this.router.navigate(['/login']);
+            console.log("cool");
+            console.log('response.json().status.success', response.json().status.success);
+            console.log('response.json()', response.json());
             alert('you register');
           }
         },
