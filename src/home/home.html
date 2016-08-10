@@ -4,7 +4,7 @@
     <p><a class="btn btn-primary btn-lg" role="button" (click)="logout()">Logout</a></p>
     <button (click)="getUsersService()">Get users</button>
     <ul>
-      <li *ngFor="#user of users">Email:{{user.email}}</li>
+      <li *ngFor="let user of users">Email:{{user.email}}</li>
     </ul>
   </div>
 </div>

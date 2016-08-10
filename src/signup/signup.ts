@@ -28,12 +28,15 @@ export class Signup {
     let body = JSON.stringify({ email, password });
     console.log('body', body);
     this.http.post('http://localhost:3000/api/v1/users', body, { headers: contentHeaders })
+    // AuthFactory.save(body)
       .subscribe(
         response => {
-          this.router.navigate(['/login']);
-           console.log("cool");
-           console.log('response.json()', response.json());
-          alert('you register');
+          if (response.json().status.success == null) {
+            alert('email address or password you entered is not correct');
+          } else {
+            this.router.navigate(['/login']);
+            alert('you register');
+          }
         },
         error => {
           alert(error.text());
